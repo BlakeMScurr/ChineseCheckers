@@ -12,7 +12,7 @@ var selectedHighlight = "444"
 function setTitle(m: match) {
     var title = <HTMLHeadingElement>document.querySelector("#title")
     console.log("working?")
-    title.innerHTML = m.winner() == -1? "Game on!": players[m.winner()].name + " is the winner!!!"
+    title.innerHTML = m.winner() == -1? players[m.currentPlayer].name + "'s turn": players[m.winner()].name + " is the winner!!!"
 }
 
 function coordinateFromElement(tile: HTMLDivElement) {
@@ -103,7 +103,7 @@ class moveHandler {
 }
 
 // Create and render initial states
-var players = [new player("blake", playerColour[0]), new player("anja", playerColour[1])]
+var players = [new player("Blake", playerColour[0]), new player("Anja", playerColour[1])]
 var matchInstance = newCheckersMatch(players)
 var mh = new moveHandler()
 
