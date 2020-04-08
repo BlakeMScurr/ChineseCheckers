@@ -1,0 +1,17 @@
+import { game, match, graph, player, board, move } from "../game/game"
+
+class GameX {
+    topology():graph {}
+
+    initialiseState(emptyState: board, players: Array<player>) {}
+
+    validateMove(currentPlayer: player, boardState: board, nextMove: move):boolean {}
+
+    applyMove(currentPlayer: player, boardState: board, nextMove: move) {}
+    
+    winCondition(currentPlayer: player, boardState: board):number {}
+}
+
+export function newGameXMatch():match {
+
+}

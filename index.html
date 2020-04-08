@@ -2,7 +2,110 @@
 <head>
 </head>
 <body>
+    <style>
+        #board {
+            width: 560px;
+            height: 560px;
+        }
+
+        .tile {
+            width: 70px;
+            height: 70px;
+            float: left;
+        }
+
+        .dot {
+            height: 50px; /* tile.width / 2 */
+            width: 50px;
+            transform: translate(10px, 10px);
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
     <p id="title"></p>
+    <button id="move">Move!</button>
+    <div id="board">
+        <div>
+            <div class="tile column0 row7"><div class="dot"></div></div>
+            <div class="tile column1 row7"><div class="dot"></div></div>
+            <div class="tile column2 row7"><div class="dot"></div></div>
+            <div class="tile column3 row7"><div class="dot"></div></div>
+            <div class="tile column4 row7"><div class="dot"></div></div>
+            <div class="tile column5 row7"><div class="dot"></div></div>
+            <div class="tile column6 row7"><div class="dot"></div></div>
+            <div class="tile column7 row7"><div class="dot"></div></div>
+        </div>
+        <div>
+            <div class="tile column0 row6"><div class="dot"></div></div>
+            <div class="tile column1 row6"><div class="dot"></div></div>
+            <div class="tile column2 row6"><div class="dot"></div></div>
+            <div class="tile column3 row6"><div class="dot"></div></div>
+            <div class="tile column4 row6"><div class="dot"></div></div>
+            <div class="tile column5 row6"><div class="dot"></div></div>
+            <div class="tile column6 row6"><div class="dot"></div></div>
+            <div class="tile column7 row6"><div class="dot"></div></div>
+        </div>
+        <div>
+            <div class="tile column0 row5"><div class="dot"></div></div>
+            <div class="tile column1 row5"><div class="dot"></div></div>
+            <div class="tile column2 row5"><div class="dot"></div></div>
+            <div class="tile column3 row5"><div class="dot"></div></div>
+            <div class="tile column4 row5"><div class="dot"></div></div>
+            <div class="tile column5 row5"><div class="dot"></div></div>
+            <div class="tile column6 row5"><div class="dot"></div></div>
+            <div class="tile column7 row5"><div class="dot"></div></div>
+        </div>
+        <div>
+            <div class="tile column0 row4"><div class="dot"></div></div>
+            <div class="tile column1 row4"><div class="dot"></div></div>
+            <div class="tile column2 row4"><div class="dot"></div></div>
+            <div class="tile column3 row4"><div class="dot"></div></div>
+            <div class="tile column4 row4"><div class="dot"></div></div>
+            <div class="tile column5 row4"><div class="dot"></div></div>
+            <div class="tile column6 row4"><div class="dot"></div></div>
+            <div class="tile column7 row4"><div class="dot"></div></div>
+        </div>
+        <div>
+            <div class="tile column0 row3"><div class="dot"></div></div>
+            <div class="tile column1 row3"><div class="dot"></div></div>
+            <div class="tile column2 row3"><div class="dot"></div></div>
+            <div class="tile column3 row3"><div class="dot"></div></div>
+            <div class="tile column4 row3"><div class="dot"></div></div>
+            <div class="tile column5 row3"><div class="dot"></div></div>
+            <div class="tile column6 row3"><div class="dot"></div></div>
+            <div class="tile column7 row3"><div class="dot"></div></div>
+        </div>
+        <div>
+            <div class="tile column0 row2"><div class="dot"></div></div>
+            <div class="tile column1 row2"><div class="dot"></div></div>
+            <div class="tile column2 row2"><div class="dot"></div></div>
+            <div class="tile column3 row2"><div class="dot"></div></div>
+            <div class="tile column4 row2"><div class="dot"></div></div>
+            <div class="tile column5 row2"><div class="dot"></div></div>
+            <div class="tile column6 row2"><div class="dot"></div></div>
+            <div class="tile column7 row2"><div class="dot"></div></div>
+        </div>
+        <div>
+            <div class="tile column0 row1"><div class="dot"></div></div>
+            <div class="tile column1 row1"><div class="dot"></div></div>
+            <div class="tile column2 row1"><div class="dot"></div></div>
+            <div class="tile column3 row1"><div class="dot"></div></div>
+            <div class="tile column4 row1"><div class="dot"></div></div>
+            <div class="tile column5 row1"><div class="dot"></div></div>
+            <div class="tile column6 row1"><div class="dot"></div></div>
+            <div class="tile column7 row1"><div class="dot"></div></div>
+        </div>
+        <div>
+            <div class="tile column0 row0"><div class="dot"></div></div>
+            <div class="tile column1 row0"><div class="dot"></div></div>
+            <div class="tile column2 row0"><div class="dot"></div></div>
+            <div class="tile column3 row0"><div class="dot"></div></div>
+            <div class="tile column4 row0"><div class="dot"></div></div>
+            <div class="tile column5 row0"><div class="dot"></div></div>
+            <div class="tile column6 row0"><div class="dot"></div></div>
+            <div class="tile column7 row0"><div class="dot"></div></div>
+        </div>
+    </div>
     <script src="./dist/bundle.js"></script>
 </body>
 </html>
