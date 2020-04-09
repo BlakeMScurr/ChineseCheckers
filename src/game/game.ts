@@ -1,11 +1,5 @@
 // Herein lies the logic for describing a perfect information board game at an abstract level
 
-export class Tester {
-    test() {
-        return "yeah, I'm working"
-    }
-}
-
 export class game {
     startingPosition: (players: Array<player>) => board
     validateMove: (currentPlayer: number, boardState: board, topology: graph, nextMove: move) => boolean
@@ -41,32 +35,23 @@ export class player {
     }
 }
 
-// This graph represents 
+// This graph represents the relationships between tiles on the board
 // TODO: use graph dependency // var graph = require("graph-data-structure")
 export class graph {
     // This is a two by two matrix representation of the graph
-    // Map from x to y to x to y to direction
-    edges: Map<number, Map<number, Map<number, Map<number, direction>>>>
-    // edges: Map<coordinate, Map<coordinate, direction>>
-
+    edges: Map<string, Map<string, direction>>
 
     constructor(edges: Map<coordinate, Map<coordinate, direction>>) {
         this.edges = new Map()
         edges.forEach((m1: Map<coordinate, direction>, c1: coordinate) => {
-            if (this.edges.get(c1.x) == undefined) {
-                this.edges.set(c1.x, new Map())
+            var s1 = c1.string()
+
+            if (this.edges.get(s1) == undefined) {
+                this.edges.set(s1, new Map<string, direction>())
             }
 
-            if (this.edges.get(c1.x)?.get(c1.y) == undefined) {
-                this.edges.get(c1.x)?.set(c1.y, new Map())
-            }
-
-            m1.forEach((d: direction, c2: coordinate) => {
-                if (this.edges.get(c1.x)?.get(c1.y)?.get(c2.x) == undefined) {
-                    this.edges.get(c1.x)?.get(c1.y)?.set(c2.x, new Map())
-                }
-
-                this.edges.get(c1.x)?.get(c1.y)?.get(c2.x)?.set(c2.y, d)
+            m1.forEach((dir: direction, c2: coordinate) => {
+                this.edges.get(s1)?.set(c2.string(), dir)
             })
         });
     }
@@ -83,15 +68,13 @@ export class graph {
     }
 
     hop(c: coordinate, direction: string) {
-        var adjacents = this.edges.get(c.x)?.get(c.y)
+        var adjacents = this.edges.get(c.string())
         if (adjacents == undefined) {
             return
         }
-        for (const [x, ymap] of adjacents.entries()) {
-            for (const [y, dir] of ymap.entries()) {
-                if (dir.dir == direction) {
-                    return new coordinate(x, y)
-                }
+        for (const [cstring, dir] of adjacents.entries()) {
+            if (dir.dir == direction) {
+                return parseCoordinate(cstring)
             }
         }
     }
@@ -99,10 +82,8 @@ export class graph {
     board():board {
         var b: Map<coordinate, tile> = new Map()
         
-        for (const [x, ymap] of this.edges) {
-            for (const [y, _] of ymap) {
-                b.set(new coordinate(x, y), emptyTile)
-            }
+        for (const [cstring, _] of this.edges) {
+            b.set(parseCoordinate(cstring), emptyTile)
         }
         return new board(b)
     }
@@ -218,6 +199,11 @@ export class move {
     }
 }
 
+function parseCoordinate(s: string):coordinate {
+    var c = <coordinate>JSON.parse(s)
+    return new coordinate(c.x, c.y)
+}
+
 export class coordinate {
     x: number
     y: number
@@ -228,7 +214,11 @@ export class coordinate {
     }
 
     equals(c: coordinate) {
-        return JSON.stringify(this) == JSON.stringify(c)
+        return this.string() == c.string()
+    }
+
+    string() {
+        return JSON.stringify(this)
     }
 }
 
