@@ -21,8 +21,6 @@ class Checkers {
             emptyState.set(pawn1, new coordinate(i*2, 6))
             emptyState.set(pawn1, new coordinate(i*2+1, 7))
         }
-
-        console.log(emptyState)
     }
 
     validateMove(currentPlayer: number, boardState: board, topology: graph, nextMove: move):boolean {
@@ -182,12 +180,7 @@ function hopped(nextMove: move, topology: graph, directions: Array<string>):coor
             if (topology.traverse(start, [dir, dir, "right", "right"]).equals(end)) {
                 hopValid = true
                 var frog = topology.traverse(start, [dir, "right"])
-                if (frog == undefined) {
-                    console.log("alas! the refined and noble french!")
-                }
-                console.log("based pushing " + JSON.stringify(frog))
                 hopped.push(frog)
-                console.log(JSON.stringify(hopped[0]))
             }
         })
 
@@ -196,9 +189,6 @@ function hopped(nextMove: move, topology: graph, directions: Array<string>):coor
         }
     })
 
-    if (hopped.length >= 1) {
-        console.log(JSON.stringify(hopped[0]))
-    }
     if (moveValid) {
         return hopped
     }

@@ -11,7 +11,6 @@ var selectedHighlight = "444"
 
 function setTitle(m: match) {
     var title = <HTMLHeadingElement>document.querySelector("#title")
-    console.log("working?")
     title.innerHTML = m.winner() == -1? players[m.currentPlayer].name + "'s turn": players[m.winner()].name + " is the winner!!!"
 }
 

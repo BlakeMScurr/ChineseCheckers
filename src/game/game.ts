@@ -138,12 +138,12 @@ export class match {
 
     move(nextMove: move) {
         if (!this.gameType.validateMove(this.currentPlayer, this.boardState, this.topology, nextMove)) {
-            console.log("invalid move")
             return
         }
 
         this.gameType.applyMove(this.currentPlayer, this.boardState, this.topology, nextMove)
         this.currentPlayer = (this.currentPlayer + 1) % this.players.length
+        this.moves.push(nextMove)
 
         var winningPlayer = this.gameType.winCondition(this.players, this.currentPlayer, this.boardState)
         if (winningPlayer != -1) {
